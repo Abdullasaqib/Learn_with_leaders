@@ -1,22 +1,22 @@
 
 import React, { useState } from 'react';
-import { GoogleGenAI } from "@google/genai";
-import { 
-  Edit3, Mail, Phone, Globe, Clock, Trophy, Plus, FileText, 
-  CheckCircle2, Star, Briefcase, GraduationCap, Users, 
-  BarChart, Zap, Share2, Printer, ChevronRight, 
-  Award, Heart, ShieldCheck, Trash2, Lock, Bell, 
-  Languages, Settings, Download, MoreVertical, 
-  Search, ExternalLink, Cpu, LayoutGrid, Palette, Leaf, 
+
+import {
+  Edit3, Mail, Phone, Globe, Clock, Trophy, Plus, FileText,
+  CheckCircle2, Star, Briefcase, GraduationCap, Users,
+  BarChart, Zap, Share2, Printer, ChevronRight,
+  Award, Heart, ShieldCheck, Trash2, Lock, Bell,
+  Languages, Settings, Download, MoreVertical,
+  Search, ExternalLink, Cpu, LayoutGrid, Palette, Leaf,
   FlaskConical, Code, Bot, PieChart, Sparkles, CloudUpload,
-  ArrowRight, X, Calendar, Target as TargetIcon, 
+  ArrowRight, X, Calendar, Target as TargetIcon,
   ChevronDown,
   Upload,
   Wand2,
   Loader2
 } from 'lucide-react';
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
 
 const AddAchievementDrawer: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   const [selectedCategory, setSelectedCategory] = useState('Academic');
@@ -28,29 +28,7 @@ const AddAchievementDrawer: React.FC<{ isOpen: boolean; onClose: () => void }> =
   const [isGenerating, setIsGenerating] = useState(false);
 
   const generateAIDescription = async () => {
-    if (!title || !organization) {
-      alert('Please provide a title and organization first.');
-      return;
-    }
-    
-    setIsGenerating(true);
-    try {
-      const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: `Write a compelling and professional 2-sentence achievement description for a student profile. 
-                  Title: ${title}
-                  Organization: ${organization}
-                  Category: ${selectedCategory}. 
-                  Make it sound impressive but concise.`
-      });
-      if (response.text) {
-        setDescription(response.text.trim());
-      }
-    } catch (err) {
-      console.error('Gemini error:', err);
-    } finally {
-      setIsGenerating(false);
-    }
+    alert("AI features are disabled in this serverless version.");
   };
 
   if (!isOpen) return null;
@@ -84,9 +62,8 @@ const AddAchievementDrawer: React.FC<{ isOpen: boolean; onClose: () => void }> =
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-3 ${
-                    selectedCategory === cat.id ? 'bg-amber-50 border-amber-400 shadow-md' : 'bg-white border-gray-100'
-                  }`}
+                  className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-3 ${selectedCategory === cat.id ? 'bg-amber-50 border-amber-400 shadow-md' : 'bg-white border-gray-100'
+                    }`}
                 >
                   <div className={`${cat.color}`}>{cat.icon}</div>
                   <span className={`text-[12px] font-black ${selectedCategory === cat.id ? 'text-black' : 'text-gray-400'}`}>{cat.id}</span>
@@ -104,23 +81,7 @@ const AddAchievementDrawer: React.FC<{ isOpen: boolean; onClose: () => void }> =
             </div>
           </div>
 
-          <div className="bg-purple-50 rounded-[32px] p-8 border border-purple-100">
-            <div className="flex gap-4 items-start">
-              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-md text-purple-500"><Wand2 className="w-6 h-6" /></div>
-              <div className="space-y-3 flex-1">
-                <h4 className="text-[15px] font-black text-black">AI Writing Assistant <span className="text-[9px] bg-purple-600 text-white px-2 py-0.5 rounded ml-2 uppercase">Beta</span></h4>
-                <p className="text-[12px] text-gray-500 font-medium">Let AI help you craft a professional achievement description.</p>
-                <button 
-                  onClick={generateAIDescription}
-                  disabled={isGenerating}
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 text-white font-black px-6 py-2.5 rounded-xl text-[11px] flex items-center gap-2 hover:scale-[1.02] transition-all disabled:opacity-50"
-                >
-                  {isGenerating ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
-                  {isGenerating ? 'Generating...' : 'Generate Description'}
-                </button>
-              </div>
-            </div>
-          </div>
+
         </div>
 
         <div className="p-8 border-t border-gray-100 bg-white absolute bottom-0 left-0 right-0 z-20 flex gap-4">
