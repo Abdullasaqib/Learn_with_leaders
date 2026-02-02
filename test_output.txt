@@ -1,0 +1,79 @@
+
+Running 6 tests using 2 workers
+
+Page Title: Learn With Leaders
+  ✓  1 [chromium] › tests/qa.spec.ts:8:3 › Automated QA for Learn With Leaders › Page Load and Critical Elements (1.4s)
+  ✓  3 [chromium] › tests/qa.spec.ts:33:3 › Automated QA for Learn With Leaders › Navigation: Login -> Forgot Password -> Login (966ms)
+  ✘  2 [chromium] › tests/qa.spec.ts:25:3 › Automated QA for Learn With Leaders › Navigation: Login -> Signup -> Login (6.5s)
+  ✘  4 [chromium] › tests/qa.spec.ts:41:3 › Automated QA for Learn With Leaders › Form Validation: Empty Submission (5.8s)
+Login Error: Invalid API key
+  ✓  5 [chromium] › tests/qa.spec.ts:52:3 › Automated QA for Learn With Leaders › Form Validation: Invalid Credentials (1.3s)
+--- Console Errors ---
+Failed to load resource: the server responded with a status of 404 ()
+--- Failed Network Requests ---
+GET https://learn-with-leaders-mu.vercel.app/index.css - 404
+  ✓  6 [chromium] › tests/qa.spec.ts:64:3 › Automated QA for Learn With Leaders › Console and Network Errors (3.9s)
+
+
+  1) [chromium] › tests/qa.spec.ts:25:3 › Automated QA for Learn With Leaders › Navigation: Login -> Signup -> Login
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: 'Welcome Back' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('heading', { name: 'Welcome Back' })[22m
+
+
+      28 |
+      29 |     await page.click('text=Sign In');
+    > 30 |     await expect(page.getByRole('heading', { name: 'Welcome Back' })).toBeVisible();
+         |                                                                       ^
+      31 |   });
+      32 |
+      33 |   test('Navigation: Login -> Forgot Password -> Login', async ({ page }) => {
+        at /app/tests/qa.spec.ts:30:71
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/qa-Automated-QA-for-Learn--9e344-tion-Login---Signup---Login-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/qa-Automated-QA-for-Learn--9e344-tion-Login---Signup---Login-chromium/error-context.md
+
+  2) [chromium] › tests/qa.spec.ts:41:3 › Automated QA for Learn With Leaders › Form Validation: Empty Submission
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('.text-red-600')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for locator('.text-red-600')[22m
+
+
+      44 |     // Expect error message container to be visible
+      45 |     const errorMessage = page.locator('.text-red-600');
+    > 46 |     await expect(errorMessage).toBeVisible();
+         |                                ^
+      47 |
+      48 |     const text = await errorMessage.textContent();
+      49 |     console.log(`Validation Error: ${text}`);
+        at /app/tests/qa.spec.ts:46:32
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/qa-Automated-QA-for-Learn--23d6d-Validation-Empty-Submission-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/qa-Automated-QA-for-Learn--23d6d-Validation-Empty-Submission-chromium/error-context.md
+
+  2 failed
+    [chromium] › tests/qa.spec.ts:25:3 › Automated QA for Learn With Leaders › Navigation: Login -> Signup -> Login
+    [chromium] › tests/qa.spec.ts:41:3 › Automated QA for Learn With Leaders › Form Validation: Empty Submission
+  4 passed (22.5s)
