@@ -16,7 +16,8 @@ import {
   Loader2
 } from 'lucide-react';
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// WARNING: API_KEY is exposed to the client. This is a security risk.
+// Ideally, this should be handled by a backend service to protect your quota and billing.
 
 const AddAchievementDrawer: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   const [selectedCategory, setSelectedCategory] = useState('Academic');
@@ -28,6 +29,14 @@ const AddAchievementDrawer: React.FC<{ isOpen: boolean; onClose: () => void }> =
   const [isGenerating, setIsGenerating] = useState(false);
 
   const generateAIDescription = async () => {
+    const apiKey = process.env.API_KEY;
+    if (!apiKey) {
+      alert('API Key is missing. Please check your environment variables.');
+      return;
+    }
+
+    const ai = new GoogleGenAI({ apiKey });
+
     if (!title || !organization) {
       alert('Please provide a title and organization first.');
       return;
