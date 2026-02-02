@@ -1,0 +1,42 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e7]:
+      - generic [ref=e8]: LEARN WITH
+      - generic [ref=e9]: LEADERS
+    - heading "Welcome to Your Leadership Journey" [level=1] [ref=e11]
+  - generic [ref=e13]:
+    - generic [ref=e14]:
+      - heading "Welcome Back" [level=2] [ref=e15]
+      - paragraph [ref=e16]: Sign in to continue your leadership journey
+    - generic [ref=e17]:
+      - button "Google Continue with Google" [ref=e18] [cursor=pointer]:
+        - img "Google" [ref=e19]
+        - text: Continue with Google
+      - button "Continue with Apple" [ref=e20] [cursor=pointer]
+    - generic [ref=e25]: or sign in with email
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - text: Email Address
+        - generic [ref=e28]:
+          - img [ref=e29]
+          - textbox "Enter your email" [ref=e32]
+      - generic [ref=e33]:
+        - text: Password
+        - generic [ref=e34]:
+          - img [ref=e35]
+          - textbox "Enter your password" [ref=e38]
+          - button [ref=e39] [cursor=pointer]:
+            - img [ref=e40]
+      - generic [ref=e43]:
+        - generic [ref=e44] [cursor=pointer]:
+          - checkbox "Remember me" [ref=e45]
+          - generic [ref=e46]: Remember me
+        - button "Forgot Password?" [ref=e47] [cursor=pointer]
+      - button "Sign In" [active] [ref=e48] [cursor=pointer]
+    - generic [ref=e50]:
+      - text: New here?
+      - button "Create your account →" [ref=e51] [cursor=pointer]
+```
