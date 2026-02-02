@@ -1,0 +1,8 @@
+
+{
+  "name": "Learn With Leaders Dashboard",
+  "description": "A comprehensive leadership learning platform featuring program exploration, application tracking, student profiles, and certificate management.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
